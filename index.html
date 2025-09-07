@@ -14,7 +14,7 @@
     />
     <link rel="stylesheet" href="./style/style.css" />
   </head>
-  <body>
+  <body class="relative">
     <header>
       <nav class="bg-green-700 p-4 md:px-20 shadow-md shadow-white">
         <div class="container mx-auto flex justify-between relative">
@@ -38,11 +38,10 @@
             <a href="#"><li>Gallery</li></a>
             <a href="#"><li>Plant a Tree</li></a>
           </ul>
-          <button
-            class="text-sm text-green-700 bg-yellow-500 px-4 py-2 font-semibold rounded-full hover:bg-yellow-300"
-          >
-            Plant a Tree
-          </button>
+          <div class="flex gap-2 items-center">
+            <button class="text-xs md:text-sm text-green-700 bg-yellow-500 px-3 sm:px-4 py-2 font-semibold rounded-full hover:bg-yellow-300"
+            >Plant a Tree</button>
+            <p id="cart-btn" class="md:hidden text-yellow-500 text-xl"><i class="fa-solid fa-cart-shopping"></i></p></div>
         </div>
       </nav>
 
@@ -72,22 +71,51 @@
     </header>
 
     <!-- dynamic section -->
-     <main class="px-4 md:px-20 py-16 bg-green-50">
+     <main class="px-4 md:px-10 py-16 bg-green-50">
       <section class="container mx-auto">
       <h3 class="text-2xl font-bold text-center my-4">Choose Your Trees</h3>
+
       <div class="grid md:grid-cols-6 gap-4">
+        <!-- categories section -->
         <aside id="categories">
           <h4 class="font-semibold text-lg mb-2 text-center md:text-left">Categories</h4>
           <ul id="category-container" class="flex flex-wrap md:flex-col gap-1 justify-center">
-            <li class="bg-green-600 !text-white">All Trees</li>
           </ul>
         </aside>
-
+        <!-- products section -->
         <section id="items-container" class="md:col-span-4 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         </section>
+        <!-- cart section -->
+        <aside id="cart-section" class="bg-white p-3 rounded-xl h-fit absolute md:static shadow-xl md:shadow-none top-12 right-0 w-full opacity-0 pointer-events-none md:opacity-100 transition-all duration-300">
+          <h3 class="text-xl font-bold mb-4">Your Cart</h3>
+          <!-- added items -->
+          <div id="cart-items"></div>
+
+          <div class="flex justify-between mt-4 py-2 border-t border-gray-200">
+            <p class="font-semibold">Total:</p>
+            <p class="text-xl">৳<span id="total-price" class="font-semibold"> 0</span></p>
+          </div>
+          <!-- <button class="text-white px-4 py-2 mt-8 bg-green-700 text-sm font-semibold rounded-lg hover:bg-green-700/80 w-full checkout">Checkout</button> -->
+        </aside>
       </div>
     </section>
-     </main>
+    
+    <!-- campaign section -->
+    <section class="mt-16 container mx-auto px-4 lg:w-4/6">
+      <h3 class="text-2xl text-center font-bold mb-4">About the Campaign</h3>
+      <div class="grid md:grid-cols-2 justify-center items-center gap-10">
+        <div class="rounded-md flex-1 mx-auto"><img src="./assets/about.png"></div>
+        <div class="flex-1 text-sm text-gray-500">
+          <p>Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and combat global warming.</p>
+          <ul class="list-disc pl-6 mt-4">
+            <li>Restoration of natural habitats</li>
+            <li>Improvement of air quality</li>
+            <li>Support for local communities</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
 
     <!-- javascript -->
     <script src="./script/index.js"></script>
