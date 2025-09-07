@@ -24,6 +24,7 @@ const showCategories = (categories) => {
   const categoriesContainer = getById("category-container");
   categories.forEach((category) => {
     const categoryBtn = document.createElement("li");
+    categoryBtn.classList.add("bg-green-100", "md:bg-transparent");
     categoryBtn.id = `${category.id}`;
     categoryBtn.innerText = `${category.category_name}`;
     categoriesContainer.append(categoryBtn);
@@ -47,17 +48,17 @@ const showPlants = (items) => {
       "bg-white",
       "p-3",
       "rounded-xl",
-      "shadow-md"
+      "shadow-lg"
     );
     itemCard.innerHTML = `
-    <div class="aspect-[4/3] w-full overflow-hidden rounded-md"><img class="w-full h-full object-cover" src="${item.image}" alt=""></div>
+    <div class="aspect-[5/3] w-full overflow-hidden rounded-t-md"><img class="w-full h-full object-cover" src="${item.image}" alt=""></div>
       <p class="font-semibold text-lg">${item.name}</p>
-      <p class="text-sm text-gray-600">${item.description}</p>
+      <p class="text-[10px] text-gray-600">${item.description}</p>
       <div class="flex justify-between items-center">
-      <button class="px-2 pb-1 text-xs bg-green-100 text-green-700 rounded-full">${item.category}</button>
+      <button class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded-md">${item.category}</button>
       <p class="text-lg">৳<span id="price" class="font-semibold text-sm"> ${item.price}</span></p>
       </div>
-    <button id="add-btn" class="text-white px-3 py-1 bg-green-700 text-sm font-semibold rounded-full">Add to Cart</button>
+    <button id="add-btn" class="text-white px-4 py-2 mt-2 bg-green-700 text-sm font-semibold rounded-lg hover:bg-green-700/80">Add to Cart</button>
     `;
     itemContainer.append(itemCard);
   });
