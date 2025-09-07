@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Green Earth</title>
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
-    <!-- tailwind css cdn -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- tailwind css and daisyUI cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- font awesome cdn -->
     <link
       rel="stylesheet"
@@ -35,8 +36,8 @@
 
           <ul id="nav-option" class="md:flex gap-4 text-white hidden">
             <a href="#"><li>About</li></a>
-            <a href="#"><li>Gallery</li></a>
-            <a href="#"><li>Plant a Tree</li></a>
+            <a href="#items-container"><li>Gallery</li></a>
+            <a href="#donation"><li>Plant a Tree</li></a>
           </ul>
           <div class="flex gap-2 items-center">
             <button class="text-xs md:text-sm text-green-800 bg-yellow-500 px-3 sm:px-4 py-2 font-semibold rounded-full hover:bg-yellow-300"
@@ -84,7 +85,9 @@
         </aside>
         <!-- products section -->
         <section id="items-container" class="md:col-span-4 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div id="loader" class="col-span-full flex justify-center text-green-500"><span class="loading loading-dots loading-xl w-20 self-start"></span></div>
         </section>
+
         <!-- cart section -->
         <aside id="cart-section" class="bg-white p-3 rounded-xl h-fit absolute md:static shadow-xl md:shadow-none top-12 right-0 w-full opacity-0 pointer-events-none md:pointer-events-auto md:opacity-100 transition-all duration-300">
           <h3 class="text-xl font-bold mb-4">Your Cart</h3>
@@ -139,7 +142,7 @@
   </section>
 
   <!-- tree donation section -->
-   <section class="bg-green-800 px-4 md:px-20">
+   <section id="donation" class="bg-green-800 px-4 md:px-20">
     <div class="container mx-auto py-16">
       <h3 class="text-2xl text-center font-bold text-white">Plant a Tree Today</h3>
       <form class="bg-green-700 p-6 grid gap-4 md:w-3/8 mx-auto mt-10 rounded-xl">

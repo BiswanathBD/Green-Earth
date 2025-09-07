@@ -65,12 +65,9 @@ const showCategories = (categories) => {
 };
 
 // fetch all plants and show on ui
-fetch("https://openapi.programming-hero.com/api/plants")
-  .then((res) => res.json())
-  .then((items) => showPlants(items.plants));
-
 const showPlants = (items) => {
   const itemContainer = getById("items-container");
+  itemContainer.innerHTML = "";
   items.forEach((item) => {
     const itemCard = document.createElement("div");
     itemCard.classList.add(
@@ -86,7 +83,7 @@ const showPlants = (items) => {
     );
     itemCard.innerHTML = `
     <div class="aspect-[5/3] w-full overflow-hidden rounded-t-md"><img class="w-full h-full object-cover" src="${item.image}" alt=""></div>
-      <p class="name font-semibold text-lg">${item.name}</p>
+      <p onclick = "modalView(${item.id})" class="name font-semibold text-lg">${item.name}</p>
       <p class="text-[10px] text-gray-600">${item.description}</p>
       <div class="flex justify-between items-center">
       <button class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded-md">${item.category}</button>
@@ -97,11 +94,30 @@ const showPlants = (items) => {
     itemContainer.append(itemCard);
   });
 };
+const getAllPlants = async () => {
+  try {
+    const res = await fetch("https://openapi.programming-hero.com/api/plants");
+    const items = await res.json();
+    showPlants(items.plants);
+  } catch (error) {
+    getById("items-container").innerHTML = `
+    <div class="col-span-full text-center text-red-500/80">
+    <h1 class="text-4xl"><i class="fa-solid fa-triangle-exclamation"></i></h1>
+    <p>Failed to load Data</p>
+    </div>
+    `;
+  }
+};
+getAllPlants();
 
 // item by category button
 const categoriesBtn = getById("categories");
+const itemContainer = getById("items-container");
 categoriesBtn.addEventListener("click", (e) => {
   if (e.target.classList.contains("category-btn")) {
+    itemContainer.innerHTML =
+      '<div id="loader" class="col-span-full flex justify-center text-green-500"><span class="loading loading-dots loading-xl w-20 self-start"></span></div>';
+
     const categoryBtnAll = document.querySelectorAll(".category-btn");
     categoryBtnAll.forEach((btn) => {
       btn.classList.remove("!bg-green-600", "!text-white");
@@ -109,11 +125,25 @@ categoriesBtn.addEventListener("click", (e) => {
     e.target.classList.add("!bg-green-600", "!text-white");
     const btnId = e.target.id;
     const url = `https://openapi.programming-hero.com/api/category/${btnId}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((items) => showPlantsCategories(items.plants));
+
+    const fetchItems = async () => {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const items = data.plants;
+        showPlantsCategories(items);
+      } catch (error) {
+        getById("items-container").innerHTML = `
+    <div class="col-span-full text-center text-red-500/80">
+    <h1 class="text-4xl"><i class="fa-solid fa-triangle-exclamation"></i></h1>
+    <p>Failed to load Data</p>
+    </div>
+    `;
+      }
+    };
+    fetchItems();
+
     const showPlantsCategories = (items) => {
-      const itemContainer = getById("items-container");
       itemContainer.innerHTML = "";
       items.forEach((item) => {
         const itemCard = document.createElement("div");
@@ -130,7 +160,7 @@ categoriesBtn.addEventListener("click", (e) => {
         );
         itemCard.innerHTML = `
     <div class="aspect-[5/3] w-full overflow-hidden rounded-t-md"><img class="w-full h-full object-cover" src="${item.image}" alt=""></div>
-      <p class="name font-semibold text-lg">${item.name}</p>
+      <p onclick = "modalView(${item.id})" class="name font-semibold text-lg">${item.name}</p>
       <p class="text-[10px] text-gray-600">${item.description}</p>
       <div class="flex justify-between items-center">
       <button class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded-md">${item.category}</button>
@@ -143,6 +173,14 @@ categoriesBtn.addEventListener("click", (e) => {
     };
   }
 });
+
+// open item details modal
+const modalView = (id) => {
+  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((details) => plantDetails(details.plants));
+};
 
 // add btn and cart features
 const productContainer = getById("items-container");

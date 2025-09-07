@@ -42,8 +42,12 @@
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
-form input{
+form input {
   background-color: white;
   padding: 10px 20px;
   border-radius: 6px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
