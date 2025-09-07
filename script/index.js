@@ -74,6 +74,7 @@ const showPlants = (items) => {
   items.forEach((item) => {
     const itemCard = document.createElement("div");
     itemCard.classList.add(
+      "product-card",
       "flex",
       "flex-col",
       "gap-1",
@@ -117,6 +118,7 @@ categoriesBtn.addEventListener("click", (e) => {
       items.forEach((item) => {
         const itemCard = document.createElement("div");
         itemCard.classList.add(
+          "product-card",
           "flex",
           "flex-col",
           "gap-1",

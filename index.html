@@ -16,7 +16,7 @@
   </head>
   <body class="relative">
     <header>
-      <nav class="bg-green-700 p-4 md:px-20 shadow-md shadow-white">
+      <nav class="bg-green-800 p-4 md:px-20 shadow-md shadow-white">
         <div class="container mx-auto flex justify-between relative">
           <div class="flex items-center gap-1">
             <p class="md:hidden">
@@ -39,9 +39,9 @@
             <a href="#"><li>Plant a Tree</li></a>
           </ul>
           <div class="flex gap-2 items-center">
-            <button class="text-xs md:text-sm text-green-700 bg-yellow-500 px-3 sm:px-4 py-2 font-semibold rounded-full hover:bg-yellow-300"
+            <button class="text-xs md:text-sm text-green-800 bg-yellow-500 px-3 sm:px-4 py-2 font-semibold rounded-full hover:bg-yellow-300"
             >Plant a Tree</button>
-            <p id="cart-btn" class="md:hidden text-yellow-500 text-xl"><i class="fa-solid fa-cart-shopping"></i></p></div>
+            <p id="cart-btn" class="md:hidden text-yellow-600 text-xl"><i class="fa-solid fa-cart-shopping"></i></p></div>
         </div>
       </nav>
 
@@ -59,7 +59,7 @@
               greener for future generations.
             </p>
             <button
-              class="text-sm text-green-700 bg-yellow-500 px-4 py-2 font-semibold rounded-full hover:bg-yellow-300"
+              class="text-sm text-green-800 bg-yellow-500 px-4 py-2 font-semibold rounded-full hover:bg-yellow-300"
             >
               Get Involved
             </button>
@@ -86,7 +86,7 @@
         <section id="items-container" class="md:col-span-4 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         </section>
         <!-- cart section -->
-        <aside id="cart-section" class="bg-white p-3 rounded-xl h-fit absolute md:static shadow-xl md:shadow-none top-12 right-0 w-full opacity-0 pointer-events-none md:opacity-100 transition-all duration-300">
+        <aside id="cart-section" class="bg-white p-3 rounded-xl h-fit absolute md:static shadow-xl md:shadow-none top-12 right-0 w-full opacity-0 pointer-events-none md:pointer-events-auto md:opacity-100 transition-all duration-300">
           <h3 class="text-xl font-bold mb-4">Your Cart</h3>
           <!-- added items -->
           <div id="cart-items"></div>
@@ -95,7 +95,7 @@
             <p class="font-semibold">Total:</p>
             <p class="text-xl">৳<span id="total-price" class="font-semibold"> 0</span></p>
           </div>
-          <!-- <button class="text-white px-4 py-2 mt-8 bg-green-700 text-sm font-semibold rounded-lg hover:bg-green-700/80 w-full checkout">Checkout</button> -->
+          <!-- <button class="text-white px-4 py-2 mt-8 bg-green-800 text-sm font-semibold rounded-lg hover:bg-green-800/80 w-full checkout">Checkout</button> -->
         </aside>
       </div>
     </section>
@@ -116,6 +116,56 @@
       </div>
     </section>
   </main>
+
+    <!-- our impact section -->
+  <section class="bg-green-100 px-4 md:px-20">
+    <div class="container mx-auto py-12">
+      <h3 class="text-2xl text-center font-bold mb-4">Our Impact</h3>
+      <div class="impact text-center grid md:grid-cols-3 gap-10">
+        <div class="bg-white p-8 rounded-lg border border-gray-100">
+          <h4 class="text-3xl text-green-600 font-bold">500K+</h4>
+          <p class="text-gray-500 text-sm">Trees Planted</p>
+        </div>
+        <div class="bg-white p-8 rounded-lg border border-gray-100">
+          <h4 class="text-3xl text-green-600 font-bold">120+</h4>
+          <p class="text-gray-500 text-sm">Communities Involved</p>
+        </div>
+        <div class="bg-white p-8 rounded-lg border border-gray-100">
+          <h4 class="text-3xl text-green-600 font-bold">30+</h4>
+          <p class="text-gray-500 text-sm">Countries Reached</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- tree donation section -->
+   <section class="bg-green-800 px-4 md:px-20">
+    <div class="container mx-auto py-16">
+      <h3 class="text-2xl text-center font-bold text-white">Plant a Tree Today</h3>
+      <form class="bg-green-700 p-6 grid gap-4 md:w-3/8 mx-auto mt-10 rounded-xl">
+        <input type="text" name="" id="name" placeholder="Your Name">
+        <input type="email" name="" id="email" placeholder="Your Email Address">
+        <select name="select" id="" class="px-5 py-2.5 bg-white rounded-md">
+          <option value="none" disabled selected>Numbers of Trees</option>
+          <option value="">1</option>
+          <option value="">2</option>
+          <option value="">3</option>
+          <option value="">4</option>
+          <option value="">5</option>
+          <option value="">6</option>
+          <option value="">7</option>
+          <option value="">8</option>
+          <option value="">9</option>
+          <option value="">10</option>
+        </select>
+        <button class="text-xs md:text-sm text-green-800 bg-yellow-500 px-3 sm:px-4 py-2 font-semibold rounded-full hover:bg-yellow-300"
+              >Donate Now</button>
+      </form>
+    </div>
+   </section>
+   <footer class="bg-green-900 text-center text-white p-4">
+    <p>© 2025 Green Earth. All Rights Reserved.</p>
+   </footer>
 
     <!-- javascript -->
     <script src="./script/index.js"></script>
