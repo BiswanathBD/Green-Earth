@@ -56,7 +56,8 @@ const showCategories = (categories) => {
     categoryBtn.classList.add(
       "bg-green-100",
       "md:bg-transparent",
-      "category-btn"
+      "category-btn",
+      "cursor-pointer"
     );
     categoryBtn.id = `${category.id}`;
     categoryBtn.innerText = `${category.category_name}`;
@@ -83,11 +84,11 @@ const showPlants = (items) => {
     );
     itemCard.innerHTML = `
     <div class="aspect-[5/3] w-full overflow-hidden rounded-t-md"><img class="w-full h-full object-cover" src="${item.image}" alt=""></div>
-      <p onclick = "modalView(${item.id})" class="name font-semibold text-lg">${item.name}</p>
+      <p onclick = "modalView(${item.id})" class="name font-semibold text-lg cursor-pointer">${item.name}</p>
       <p class="text-[10px] text-gray-600">${item.description}</p>
       <div class="flex justify-between items-center">
       <button class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded-md">${item.category}</button>
-      <p class="text-lg">৳<span class="price" class="font-semibold text-sm"> ${item.price}</span></p>
+      <p class="text-lg">৳<span class="font-semibold text-sm price"> ${item.price}</span></p>
       </div>
     <button class="add-btn text-white px-4 py-2 mt-2 bg-green-700 text-sm font-semibold rounded-lg hover:bg-green-700/80">Add to Cart</button>
     `;
@@ -160,11 +161,11 @@ categoriesBtn.addEventListener("click", (e) => {
         );
         itemCard.innerHTML = `
     <div class="aspect-[5/3] w-full overflow-hidden rounded-t-md"><img class="w-full h-full object-cover" src="${item.image}" alt=""></div>
-      <p onclick = "modalView(${item.id})" class="name font-semibold text-lg">${item.name}</p>
+      <p onclick = "modalView(${item.id})" class="name font-semibold text-lg cursor-pointer">${item.name}</p>
       <p class="text-[10px] text-gray-600">${item.description}</p>
       <div class="flex justify-between items-center">
       <button class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded-md">${item.category}</button>
-      <p class="text-lg">৳<span class="price" class="font-semibold text-sm"> ${item.price}</span></p>
+      <p class="text-lg">৳<span class="font-semibold text-sm price"> ${item.price}</span></p>
       </div>
     <button class="add-btn text-white px-4 py-2 mt-2 bg-green-700 text-sm font-semibold rounded-lg hover:bg-green-700/80">Add to Cart</button>
     `;
