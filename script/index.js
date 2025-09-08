@@ -1,7 +1,8 @@
 const getById = (id) => document.getElementById(id);
 // mobile menu function
 const menuBar = getById("menu-bar");
-menuBar.addEventListener("click", () => {
+menuBar.addEventListener("click", (e) => {
+  e.stopPropagation();
   const mobileNav = getById("mobile-nav");
   mobileNav.classList.toggle("pointer-events-none");
   if (mobileNav.classList.contains("opacity-0")) {
@@ -21,17 +22,29 @@ menuBar.addEventListener("click", () => {
     menuBar.classList.replace("fa-bars-staggered", "fa-bars");
   }
 });
+document.body.addEventListener("click", (e) => {
+  const mobileNav = getById("mobile-nav");
+  if (
+    mobileNav.classList.contains("opacity-100") &&
+    !mobileNav.contains(e.target)
+  ) {
+    mobileNav.classList.replace("opacity-100", "opacity-0");
+    mobileNav.classList.replace("left-8", "left-5");
+    menuBar.classList.replace("fa-bars-staggered", "fa-bars");
+  }
+});
+
 // mobile cart menu function
 const cartBtn = getById("cart-btn");
-cartBtn.addEventListener("click", () => {
+cartBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
   const cartSection = getById("cart-section");
   cartSection.classList.toggle("pointer-events-none");
   if (cartSection.classList.contains("opacity-0")) {
     cartSection.classList.replace("opacity-0", "opacity-100");
     cartSection.classList.replace("top-12", "top-16");
-    const mobileNav = getById("mobile-nav");
 
-    mobileNav.classList.toggle("pointer-events-none");
+    const mobileNav = getById("mobile-nav");
     if (mobileNav.classList.contains("opacity-100")) {
       mobileNav.classList.replace("opacity-100", "opacity-0");
       mobileNav.classList.replace("left-8", "left-5");
@@ -39,6 +52,17 @@ cartBtn.addEventListener("click", () => {
       mobileNav.classList.add("pointer-events-none");
     }
   } else {
+    cartSection.classList.replace("opacity-100", "opacity-0");
+    cartSection.classList.replace("top-16", "top-12");
+  }
+});
+
+document.body.addEventListener("click", (e) => {
+  const cartSection = getById("cart-section");
+  if (
+    cartSection.classList.contains("opacity-100") &&
+    !cartSection.contains(e.target)
+  ) {
     cartSection.classList.replace("opacity-100", "opacity-0");
     cartSection.classList.replace("top-16", "top-12");
   }
@@ -190,7 +214,7 @@ const modalView = async (id) => {
     const data = await res.json();
     const details = data.plants;
 
-    modalContainer.innerHTML = `<div class="bg-white rounded-2xl m-4 p-4 shadow-xl grid gap-4 w-4/5 md:w-2/6 border border-gray-200">
+    modalContainer.innerHTML = `<div id="modal" class="bg-white rounded-2xl p-4 shadow-xl grid gap-4 w-4/5 md:w-2/6 border border-gray-200">
     <p class="text-3xl font-bold">${details.name}</p>
 
     <div class="aspect-[5/3] overflow-hidden rounded-lg border border-gray-100">
@@ -202,8 +226,8 @@ const modalView = async (id) => {
     <p class="text-lg text-gray-500">
       <span class="font-bold text-black">Description: </span>${details.description}</p>
 
-    <div id="close-btn" class="flex justify-end">
-      <button class="px-3 py-1.5 bg-red-50 rounded-md text-sm font-bold border border-red-100 hover:bg-red-100">Close</button>
+    <div class="flex justify-end">
+      <button id="close-btn" class="px-3 py-1.5 bg-red-50 rounded-md text-sm font-bold border border-red-100 hover:bg-red-100">Close</button>
     </div>
   </div>`;
     modalContainer.classList.replace("opacity-0", "opacity-100");
@@ -236,6 +260,17 @@ const modalView = async (id) => {
     });
   }
 };
+document.body.addEventListener("click", (e) => {
+  const modalContainer = getById("modal-container");
+  const modal = getById("modal");
+  if (
+    modalContainer.classList.contains("opacity-100") &&
+    !modal.contains(e.target)
+  ) {
+    modalContainer.classList.replace("opacity-100", "opacity-0");
+    modalContainer.classList.add("pointer-events-none");
+  }
+});
 
 // add btn and cart features
 const productContainer = getById("items-container");
@@ -273,6 +308,7 @@ productContainer.addEventListener("click", (e) => {
 
 const cartItems = getById("cart-items");
 cartItems.addEventListener("click", (e) => {
+  e.stopPropagation();
   if (e.target.classList.contains("close-btn")) {
     const cartItem = e.target.closest(".cart-item");
     const itemPrice = cartItem.querySelector(".item-price").innerText;
