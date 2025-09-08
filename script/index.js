@@ -125,6 +125,10 @@ categoriesBtn.addEventListener("click", (e) => {
     });
     e.target.classList.add("!bg-green-600", "!text-white");
     const btnId = e.target.id;
+    if (btnId === "all") {
+      getAllPlants();
+      return;
+    }
     const url = `https://openapi.programming-hero.com/api/category/${btnId}`;
 
     const fetchItems = async () => {
@@ -176,11 +180,61 @@ categoriesBtn.addEventListener("click", (e) => {
 });
 
 // open item details modal
-const modalView = (id) => {
-  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((details) => plantDetails(details.plants));
+const modalView = async (id) => {
+  const modalContainer = getById("modal-container");
+
+  try {
+    const res = await fetch(
+      `https://openapi.programming-hero.com/api/plant/${id}`
+    );
+    const data = await res.json();
+    const details = data.plants;
+
+    modalContainer.innerHTML = `<div class="bg-white rounded-2xl m-4 p-4 shadow-xl grid gap-4 w-4/5 md:w-2/5 border border-gray-200">
+    <p class="text-3xl font-bold">${details.name}</p>
+
+    <div class="aspect-[5/3] overflow-hidden rounded-lg border border-gray-100">
+      <img class="w-full h-full object-cover" src="${details.image}" alt="">
+    </div>
+
+    <p class="text-xl"><span class="font-bold">Category: </span>${details.category}</p>
+    <p class="text-xl"><span class="font-bold">Price: </span>${details.price}</p>
+    <p class="text-lg text-gray-500">
+      <span class="font-bold text-black">Description: </span>${details.description}</p>
+
+    <div id="close-btn" class="flex justify-end">
+      <button class="px-3 py-1.5 bg-red-50 rounded-md text-sm font-bold border border-red-100 hover:bg-red-100">Close</button>
+    </div>
+  </div>`;
+    modalContainer.classList.replace("opacity-0", "opacity-100");
+    modalContainer.classList.remove("pointer-events-none");
+
+    const closeBtn = getById("close-btn");
+    closeBtn.addEventListener("click", () => {
+      modalContainer.classList.replace("opacity-100", "opacity-0");
+      modalContainer.classList.add("pointer-events-none");
+    });
+  } catch (error) {
+    modalContainer.innerHTML = `
+    <div class="bg-white rounded-2xl m-4 p-4 shadow-xl grid gap-4 w-4/5 md:w-1/3 border border-gray-200">
+    <div class="col-span-full text-center text-red-500/80">
+    <h1 class="text-4xl"><i class="fa-solid fa-triangle-exclamation"></i></h1>
+    <p>Failed to load Data</p>
+    </div>
+
+    <div id="close-btn" class="flex justify-end">
+      <button class="px-3 py-1.5 bg-red-50 rounded-md text-sm font-bold border border-red-100 hover:bg-red-100">Close</button>
+    </div>
+    </div>`;
+    modalContainer.classList.replace("opacity-0", "opacity-100");
+    modalContainer.classList.remove("pointer-events-none");
+
+    const closeBtn = getById("close-btn");
+    closeBtn.addEventListener("click", () => {
+      modalContainer.classList.replace("opacity-100", "opacity-0");
+      modalContainer.classList.add("pointer-events-none");
+    });
+  }
 };
 
 // add btn and cart features

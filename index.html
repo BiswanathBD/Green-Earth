@@ -81,7 +81,7 @@
         <aside id="categories">
           <h4 class="font-semibold text-lg mb-2 text-center md:text-left">Categories</h4>
           <ul id="category-container" class="flex flex-wrap md:flex-col gap-1 justify-center">
-            <li onclick="getAllPlants()" class="category-btn !bg-green-600 !text-white cursor-pointer">All trees</li>
+            <li id="all" class="category-btn !bg-green-600 !text-white cursor-pointer">All trees</li>
           </ul>
         </aside>
         <!-- products section -->
@@ -170,6 +170,9 @@
    <footer class="bg-green-900 text-center text-white p-4">
     <p>© 2025 Green Earth. All Rights Reserved.</p>
    </footer>
+
+   <!-- plants details modal -->
+<div  id="modal-container" class="fixed inset-0 bg-black/50 flex items-center justify-center opacity-0 transition-all duration-300 pointer-events-none"></div>
 
     <!-- javascript -->
     <script src="./script/index.js"></script>
