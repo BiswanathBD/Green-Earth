@@ -1,169 +1,90 @@
-## WELCOME TO ( সহজ সরল সিম্পল ) ASSIGNMENT-006
+## Create a README file to answer the following question:
 
-### 📅 Deadline For 60 marks: 9th September, 2025 (11:59 pm ⏱️)
+### 1) What is the difference between var, let, and const?
 
-### 📅 Deadline For 50 marks : 13th September , 2025 (6:00 pm⏱️)
+        var:
+                - var was the only way to declare variable before ES6.
+                - var is hoisted but before declaration the value is undefine.
+                - var allowed to reassign it's value.
 
-### 📅 Deadline For 30 marks: Any time after 13the September , 2025 (6:01 pm⏱️).
+ES6 introduced let and const as the alternative of var. Now in modern js developers used let and const most of the time. But some rare case also used var, like if we need to assign variable value before declare variable we have to use var.
 
----
-# Green Earth
+        let:
+                - ES6 introduced two way to declare variable, one of those is let.
+                - let not hoisted, and redeclare in same scope not allowed.
+                - let allowed to reassign it's value.
 
+        const:
+                - const is the most uses variable declaration way after ES6
+                - const not hoisted, and redeclare in same scope not allowed.
+                - const not allowed to reassign it's value.
 
-## Private Repository: https://classroom.github.com/a/nVZrg5R9 
+<br><br>
 
-## Alternative Private Repository: https://classroom.github.com/a/KCGI14ST 
+### 2) What is the difference between map(), forEach(), and filter()?
 
-## Alternative Private Repository: https://classroom.github.com/a/JMuIYqgK 
+        map():
+                - map() is loops through an array, modify each element with a same condition and return a new array with modified value.
+                - map() don't change original array.
 
+                - Example:
+                        const numbers = [1, 2, 3, 4, 5]
+                        const newNumbers = numbers.map(num => num + 2)
+                        Result: numbers = [1, 2, 3, 4, 5]
+                                newNumbers = [3, 4, 5, 6, 7]
 
----
-🌴 API Endpoints
----
-1. Get 🌴All Plants
-```bash
-https://openapi.programming-hero.com/api/plants
-```
+        forEach():
+                - forEach() is loops through an array, modify each element with a same condition but don't return new array.
+                - forEach() can modify original array.
 
-2. Get 🌴All categories <br/>
-```bash
-https://openapi.programming-hero.com/api/categories
-```
+                - Example:
+                        const numbers = [1, 2, 3, 4, 5]
+                        numbers.forEach((num, i, numbers) => {
+                                numbers[i] = num + 2
+                                })
+                        Result: Numbers = [3, 4, 5, 6, 7]
 
+        filter():
+                - filter() is loops through an array, find all element with a condition and return a new array of fined element.
+                - filter() don't change original array.
 
-3. Get 🌴plants by categories <br/>
-```bash
-https://openapi.programming-hero.com/api/category/${id}
-```
+                - Example:
+                        const numbers = [1, 2, 3, 4, 5, 2, 4, 2, 1]
+                        const filteredNumbers = numbers.filter(num => num === 2)
+                        result: filteredNumbers = [2, 2, 2]
 
-```bash
-https://openapi.programming-hero.com/api/category/1
-```
+<br><br>
 
-4. Get 🌴Plants Detail <br/>
+### 3) What are arrow functions in ES6?
 
-```bash
-https://openapi.programming-hero.com/api/plant/${id}
-```
+        Arrow function: ES6 introduces arrow function. It's the short form of function.
 
-```bash
-https://openapi.programming-hero.com/api/plant/1
-```
----
+        There are two types of arrow function: single line and multiline.
+        - Single-line arrow function automatically returns.
+        - Multiline function has to use `return` manually if needed.
 
+        Example: const sum = (a, b) => a + b;
 
+<br><br>
 
+### 4) How does destructuring assignment work in ES6?
 
-## ✅ Main Requirements 
+        Destructing assignment get values form and array or object by it's position or key and assign them into a variable.
 
-#### 1) Navbar
+        - Example:
+                const numbers = [1, 2, 3, 4, 5]
+                const [a, b, c] = numbers
+                result: [a, b, c] = [1, 2, 3]
 
-- Website **logo/name** on the **left**  
-- **Menu items** in the **center** 
-- **Plant a Tree button** on the **right** 
+<br><br>
 
-#### 2) Banner 
-- A **background image**  
-- A **title** and **subtitle**  
-- A **centered button**  
+### 5) Explain template literals in ES6. How are they different from string concatenation?
 
-#### 3) About Campaign
-- **Section heading**  
-- **Image on the left**, **text on the right**  
+        Template literals or template string is new way define string by using backticks (``) which support multiline string and can get values inside stings by using ${}.
 
-#### 4) Our Impact Section 
-- Show **3 cards** with campaign **statistics**  
-
-#### 5) Plant a Tree Today Section & Footer
-- **Form**: Name, Email, Number of Trees  
-- **Footer** with copyright info 
-
-#### 6) Responsiveness 
-- Website must be **mobile responsive**  
-
----
-#### 7) Create a README file to answer the following question-
-
-
-#### 1) What is the difference between var, let, and const?
-
-#### 2) What is the difference between map(), forEach(), and filter()? 
-
-#### 3) What are arrow functions in ES6?
-
-#### 4) How does destructuring assignment work in ES6?
-
-#### 5) Explain template literals in ES6. How are they different from string concatenation?
-
-## ⚙️ Functionalities 
-
-1) Category Loading 
-Load Tree Categories dynamically on the left side.
-
-2) Category Click → Tree Data 
-On clicking a category: load trees of that category.
-
-Display in a 3-column card layout.
-
-3) Card Contents 
- Each card includes:
-
-        - Image
-
-        -  Name
-
-        - Short description
-
-        - Category
-
-        - Price
-
-        - Add to Cart button
-
-4) Modal on Card Click 
-Clicking a tree name on a card opens a modal with full tree details.
-
-
-##  🧪 Challenges 
-
-
-    1) Add to Cart 
-    Clicking Add to Cart: - Adds the tree to Cart List
-                          - Shows tree name 
-
-    2) Total Calculation 
-    Calculate total price of trees in cart.
-
-    3) Remove from Cart 
-    Clicking ❌ removes tree and deducts price from total.
-
-    4) Loading Spinner
-    Show spinner while data is loading.
-
-    5) Active Button State 
-    Highlight active category button when selected.
-
-
-
-🧰 Technology Stack:
-        
-        HTML
-
-        CSS (Vanilla / Tailwind / DaisyUI)
-
-        JavaScript (Vanilla only, no frameworks)
-
-📌 Rules
-✅ At least 5 meaningful commits
-
-❌ No dummy text or Lorem Ipsum — must use relevant content
-
-
-
-
-
-## 🔗 Submission
-- **Live Link :** YOUR_DEPLOYED_URL_HERE  
-- **GitHub Private Repository:** YOUR_REPO_URL_HERE  
-
----
+        - Example: const person = {
+                name: "Biswanath",
+                age: 30,
+                }
+        console.log(`Hi i'm ${person.name}, my age is ${person.age}.)
+        output: Hi i'm Biswanath, my age is 30.
