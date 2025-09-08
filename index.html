@@ -40,7 +40,7 @@
             <a href="#donation"><li>Plant a Tree</li></a>
           </ul>
           <div class="flex gap-2 items-center">
-            <button class="text-xs md:text-sm text-green-800 bg-yellow-500 px-3 sm:px-4 py-2 font-semibold rounded-full hover:bg-yellow-300"
+            <button class="text-green-800 bg-yellow-500 px-3 sm:px-5 py-2 font-bold rounded-full hover:bg-yellow-300"
             >Plant a Tree</button>
             <p id="cart-btn" class="md:hidden text-yellow-600 text-xl"><i class="fa-solid fa-cart-shopping"></i></p></div>
         </div>
@@ -73,7 +73,7 @@
 
     <!-- dynamic section -->
      <main class="px-4 md:px-10 py-16 bg-green-50">
-      <section class="container mx-auto">
+      <section class="mx-auto">
       <h3 class="text-2xl font-bold text-center my-4">Choose Your Trees</h3>
 
       <div class="grid md:grid-cols-6 gap-4">
@@ -85,7 +85,7 @@
           </ul>
         </aside>
         <!-- products section -->
-        <section id="items-container" class="md:col-span-4 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section id="items-container" class="md:col-span-4 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div id="loader" class="col-span-full flex justify-center text-green-500"><span class="loading loading-dots loading-xl w-20 self-start"></span></div>
         </section>
 
@@ -146,23 +146,18 @@
    <section id="donation" class="bg-green-800 px-4 md:px-20">
     <div class="container mx-auto py-16">
       <h3 class="text-2xl text-center font-bold text-white">Plant a Tree Today</h3>
-      <form class="bg-green-700 p-6 grid gap-4 md:w-3/8 mx-auto mt-10 rounded-xl">
+      <form class="bg-green-700 p-6 grid gap-4 md:w-3/8 mx-auto mt-10 rounded-2xl">
         <input type="text" name="" id="name" placeholder="Your Name">
         <input type="email" name="" id="email" placeholder="Your Email Address">
         <select name="select" id="" class="px-5 py-2.5 bg-white rounded-md">
           <option value="none" disabled selected>Numbers of Trees</option>
-          <option value="">1</option>
-          <option value="">2</option>
-          <option value="">3</option>
-          <option value="">4</option>
-          <option value="">5</option>
-          <option value="">6</option>
-          <option value="">7</option>
-          <option value="">8</option>
-          <option value="">9</option>
-          <option value="">10</option>
+          <option value="">1 tree - 5$</option>
+          <option value="">3 trees - 10$</option>
+          <option value="">10 trees - 20$</option>
+          <option value="">30 trees - 50$</option>
+          <option value="">50 trees - 80$</option>
         </select>
-        <button class="text-xs md:text-sm text-green-800 bg-yellow-500 px-3 sm:px-4 py-2 font-semibold rounded-full hover:bg-yellow-300"
+        <button class="text-xs md:text-sm text-green-800 bg-yellow-500 px-3 sm:px-4 py-2.5 font-semibold rounded-full hover:bg-yellow-300"
               >Donate Now</button>
       </form>
     </div>

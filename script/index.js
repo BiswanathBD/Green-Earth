@@ -190,7 +190,7 @@ const modalView = async (id) => {
     const data = await res.json();
     const details = data.plants;
 
-    modalContainer.innerHTML = `<div class="bg-white rounded-2xl m-4 p-4 shadow-xl grid gap-4 w-4/5 md:w-2/5 border border-gray-200">
+    modalContainer.innerHTML = `<div class="bg-white rounded-2xl m-4 p-4 shadow-xl grid gap-4 w-4/5 md:w-2/6 border border-gray-200">
     <p class="text-3xl font-bold">${details.name}</p>
 
     <div class="aspect-[5/3] overflow-hidden rounded-lg border border-gray-100">
