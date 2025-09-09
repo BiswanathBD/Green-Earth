@@ -69,7 +69,7 @@ ES6 introduced let and const as the alternative of var. Now in modern js develop
 
 ### 4) How does destructuring assignment work in ES6?
 
-        Destructing assignment get values form and array or object by it's position or key and assign them into a variable.
+        Destructing assignment extract values form an array or object by it's position or key and assign them into a variable.
 
         - Example:
                 const numbers = [1, 2, 3, 4, 5]
@@ -80,7 +80,7 @@ ES6 introduced let and const as the alternative of var. Now in modern js develop
 
 ### 5) Explain template literals in ES6. How are they different from string concatenation?
 
-        Template literals or template string is new way define string by using backticks (``) which support multiline string and can get values inside stings by using ${}.
+        Template literals or template string is a new way to define string by using backticks (``) which support multiline string and can get values inside stings by using ${}. It's make codes clean.
 
         - Example: const person = {
                 name: "Biswanath",
